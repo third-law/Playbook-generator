@@ -151,70 +151,42 @@ export async function testTransaction<T>(
 export const mockAnalysisData: Omit<Analysis, 'id' | 'createdAt' | 'updatedAt' | 'briefs'> = {
   customerName: 'Test Customer Corp',
   visibilityData: {
-    seo: {
-      score: 85,
-      issues: ['Missing meta descriptions', 'Slow page load'],
-      opportunities: ['Long-tail keywords', 'Local SEO optimization']
-    },
-    social: {
-      score: 70,
-      platforms: {
-        facebook: { followers: 5000, engagement: 3.2 },
-        twitter: { followers: 2500, engagement: 2.1 },
-        linkedin: { followers: 1200, engagement: 4.5 }
-      }
-    }
+    topics: ['AI', 'Machine Learning', 'Automation'],
+    competitors: ['Competitor A', 'Competitor B', 'Competitor C'],
+    visibilityScore: 75,
+    prompts: [],
+    leaderboard: []
   },
   technicalData: {
-    performance: {
-      score: 90,
-      coreWebVitals: {
-        LCP: 1.2,
-        FID: 85,
-        CLS: 0.05
-      },
-      lighthouse: {
-        performance: 92,
-        accessibility: 95,
-        bestPractices: 88,
-        seo: 90
-      }
-    },
-    security: {
-      score: 95,
-      ssl: true,
-      vulnerabilities: [],
-      lastScan: '2023-12-01T00:00:00Z'
-    }
+    crawlerAccessible: true,
+    hasSchema: true,
+    ttfb: 250,
+    wikipediaPresence: false,
+    wikidataPresence: false,
+    googleBusinessProfile: true,
+    redditActivity: 'medium',
+    reviewCount: 150,
+    reviewSentiment: 'positive'
   },
-  competitiveInsights: {
-    position: 'strong',
-    competitors: [
-      {
-        name: 'Competitor A',
-        visibilityScore: 78,
-        strengths: ['Strong social presence'],
-        weaknesses: ['Poor mobile experience']
-      },
-      {
-        name: 'Competitor B',
-        visibilityScore: 82,
-        strengths: ['Excellent SEO'],
-        weaknesses: ['Limited social engagement']
-      }
-    ],
-    marketShare: 15.5,
-    opportunities: ['Voice search optimization', 'Video content strategy']
-  },
+  competitiveInsights: [
+    'Competitor A has stronger social media presence',
+    'Our technical SEO is superior to competitors',
+    'Need to improve content freshness compared to Competitor B',
+    'Competitor B has 82% visibility score with excellent SEO',
+    'Competitor B weakness: Limited social engagement',
+    'Current market share: 15.5%',
+    'Opportunity: Voice search optimization',
+    'Opportunity: Video content strategy'
+  ],
   customPrompt: 'Focus on digital marketing strategy and competitive positioning.',
-  categoriesSelected: ['SEO', 'Social Media', 'Performance'],
+  categoriesSelected: ['Technology', 'Platform Presence', 'Content Types'],
   briefCount: 5
 };
 
 export const mockBriefsData: Omit<Brief, 'id' | 'analysisId' | 'createdAt'>[] = [
   {
     title: 'SEO Technical Audit and Optimization',
-    category: 'SEO',
+    category: 'Technology',
     content: `
 # SEO Technical Audit and Optimization
 
@@ -238,14 +210,15 @@ Our technical analysis reveals several critical issues affecting search engine v
     isSelected: true,
     selectionOrder: 1,
     metadata: {
-      estimatedHours: 40,
-      skills: ['Technical SEO', 'Web Development'],
-      tools: ['Screaming Frog', 'Google Search Console', 'PageSpeed Insights']
+      estimatedHoursMin: 30,
+      estimatedHoursMax: 40,
+      requiredSkills: ['Technical SEO', 'Web Development'],
+      dependencies: ['Development team availability']
     }
   },
   {
     title: 'Social Media Strategy Overhaul',
-    category: 'Social Media',
+    category: 'Social Engagement and Community Strategy',
     content: `
 # Social Media Strategy Overhaul
 
@@ -269,14 +242,15 @@ Social media engagement is below industry benchmarks...
     isSelected: true,
     selectionOrder: 2,
     metadata: {
-      estimatedHours: 25,
-      skills: ['Social Media Marketing', 'Content Creation'],
-      platforms: ['Facebook', 'Instagram', 'LinkedIn', 'Twitter']
+      estimatedHoursMin: 20,
+      estimatedHoursMax: 25,
+      requiredSkills: ['Social Media Marketing', 'Content Creation'],
+      dependencies: ['Brand guidelines approval']
     }
   },
   {
     title: 'Website Performance Optimization',
-    category: 'Performance',
+    category: 'Content Structure',
     content: `
 # Website Performance Optimization
 
@@ -298,11 +272,12 @@ Current Lighthouse scores show room for improvement...
     impactScore: 4,
     priorityScore: 4.2,
     isSelected: false,
-    selectionOrder: null,
+    selectionOrder: undefined,
     metadata: {
-      estimatedHours: 60,
-      skills: ['Web Development', 'Performance Optimization'],
-      tools: ['Lighthouse', 'WebPageTest', 'GTmetrix']
+      estimatedHoursMin: 50,
+      estimatedHoursMax: 60,
+      requiredSkills: ['Web Development', 'Performance Optimization'],
+      dependencies: ['Server access', 'CDN configuration']
     }
   }
 ];
